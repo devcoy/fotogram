@@ -45,3 +45,4 @@ Route::get('/user/imagen/{filename}', 'UserController@getImage')->name('user.ima
 
 //Ruta de imágenes
 Route::get('/publicacion/crear', 'ImageController@create')->name('image.create');
+Route::post('/publicacion/guardar', 'ImageController@save')->name('image.save');
