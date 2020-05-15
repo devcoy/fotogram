@@ -23,23 +23,39 @@ class UserController extends Controller
      * 
      * @param Request $request Datos del formulario
      * 
-     * @sreturn 
+     * @return redirect Array con un mensaje
      */
     public function update(Request $request) {
-        //Obetener los datos que llegan desde el formulario
-        $id = \ Auth::user()->id; //Obtener el id de usuario logeado
+
+        //Obtener el usuario logeado
+        $user = \Auth::user(); 
+        
+        //Validar el formulario 
+        $validate = $this->validate($request, array(
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            //comprueba que el email es único, con la excepción de que cuando sea el del mismo usuario logeado sea valido
+            'nick' => 'required|string|max:255|unique:users,nick, ' . $user->id,
+            'email' => 'required|email|max:255|unique:users,email, ' . $user->id,
+        ));
+
+        //Obetener los datos que llegan desde el formulario        
         $name = $request->input('name');
         $surname = $request->input('surname');
         $nick = $request->input('nick');
         $email = $request->input('email');  
         
-        var_dump($id);
-        var_dump($name);
-        var_dump($nick);
-        var_dump($email);
-        die();
+        // Setear los nuevos valores al obj user
+        $user->name = $name;
+        $user->surname = $surname;
+        $user->nick = $nick;
+        $user->email = $email;
 
+        //Ejecutar query 
+        $user->update();
 
-
+        return redirect()->route('config')->with(array(
+            'message' => 'Usuario actualizado correctamente'
+        ));        
     }
 }
