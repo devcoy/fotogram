@@ -15,7 +15,7 @@
         </div>
 
         <div class="card-body">
-          <form method="POST" action="{{ route('user.update')}}">
+          <form method="POST" action="{{ route('user.update')}}" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group row">
@@ -67,6 +67,20 @@
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ Auth::user()->email }}" required autocomplete="email">
 
                 @error('email')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Imagen de perfil') }}</label>
+
+              <div class="col-md-6">
+                <input id="image_path" type="file" class=" @error('image_path') is-invalid @enderror" name="image_path" required autocomplete="image_path">
+
+                @error('image_path')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
                 </span>
