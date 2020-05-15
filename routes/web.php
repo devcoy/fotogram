@@ -14,7 +14,7 @@
 use App\Image;
 
 Route::get('/', function () {
-$images = Image::all();
+/* $images = Image::all();
 foreach($images as $image) {
     //var_dump($images);
     echo $image->image_path . '<br/>';
@@ -26,9 +26,19 @@ foreach($images as $image) {
     }
     echo '<h2>Likes</h2>';
     echo count($image->likes) . '<br/>';
-    echo '<hr/>';
+    echo '<hr/>'; 
 }
-die();
+die(); */
 
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/configuracion', 'UserController@config')->name('config');
+
+Route::post('/user/actualizar', 'UserController@update')->name('user.update');
+
+Route::get('/user/imagen/{filename}', 'UserController@getImage')->name('user.image');

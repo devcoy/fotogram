@@ -1,0 +1,23 @@
+.img-profile__medium {
+  display: flex;
+  justify-content: center;
+}
+
+.img-profile__medium img{
+  width: 150px; 
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;s 
+}
+
+
+.img-profile__small {
+  margin: auto;
+  margin-left: 30px;
+}
+.img-profile__small img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;  
+}
