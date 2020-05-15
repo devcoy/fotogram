@@ -42,3 +42,6 @@ Route::get('/configuracion', 'UserController@config')->name('config');
 Route::post('/user/actualizar', 'UserController@update')->name('user.update');
 
 Route::get('/user/imagen/{filename}', 'UserController@getImage')->name('user.image');
+
+//Ruta de imágenes
+Route::get('/publicacion/crear', 'ImageController@create')->name('image.create');
