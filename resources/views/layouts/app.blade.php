@@ -71,7 +71,7 @@
                 <a class="dropdown-item" href=#}" onclick="";>
                   Mi perfil
                 </a>
-                <a class="dropdown-item" href=#}" onclick="";>
+                <a class="dropdown-item"href="{{ route('config') }}" onclick="";>
                   Configuración
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
