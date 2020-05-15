@@ -57,3 +57,29 @@ CREATE TABLE IF NOT EXISTS Likes(
   CONSTRAINT fk_likes_users FOREIGN KEY (user_id) REFERENCES Users (id),
   CONSTRAINT fk_likes_images FOREIGN KEY (image_id) REFERENCES Images (id)
 )ENGINE=InnoDb;
+
+
+/**
+ * Datos dummy que podrás usar
+*/
+INSERT INTO Users VALUES (null, 'ROLE_USER', 'Jorge', 'Devcoy', 'devcoy', 'jorge@email.com', 'jorge123', null, CURTIME(), CURTIME(), null);
+INSERT INTO Users VALUES (null, 'ROLE_USER', 'Alan', 'Mozo', 'alanm', 'alan@email.com', 'alan123', null, CURTIME(), CURTIME(), null);
+
+INSERT INTO images VALUES(null, 1, 'test.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',CURTIME(), CURTIME());
+INSERT INTO images VALUES(null, 1, 'test2.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',CURTIME(), CURTIME());
+INSERT INTO images VALUES(null, 1, 'test3.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',CURTIME(), CURTIME());
+INSERT INTO images VALUES(null, 2, 'test4.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',CURTIME(), CURTIME());
+
+INSERT INTO Comments VALUES(null, 1, 1, 'Soy un comentario de la foto 1', CURTIME(), CURTIME());
+INSERT INTO Comments VALUES(null, 2, 2, 'Soy un comentario de la foto 2', CURTIME(), CURTIME());
+INSERT INTO Comments VALUES(null, 2, 3, 'Soy un comentario de la foto 3', CURTIME(), CURTIME());
+INSERT INTO Comments VALUES(null, 1, 4, 'Soy un comentario de la foto 4', CURTIME(), CURTIME());
+INSERT INTO Comments VALUES(null, 1, 4, 'Soy un comentario de la foto 4', CURTIME(), CURTIME());
+
+INSERT INTO Likes VALUES(null, 1, 1, CURTIME(), CURTIME());
+INSERT INTO Likes VALUES(null, 1, 2, CURTIME(), CURTIME());
+INSERT INTO Likes VALUES(null, 1, 2, CURTIME(), CURTIME());
+INSERT INTO Likes VALUES(null, 1, 3, CURTIME(), CURTIME());
+INSERT INTO Likes VALUES(null, 2, 1, CURTIME(), CURTIME());
+INSERT INTO Likes VALUES(null, 2, 3, CURTIME(), CURTIME());
+INSERT INTO Likes VALUES(null, 2, 4, CURTIME(), CURTIME());
