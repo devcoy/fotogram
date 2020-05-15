@@ -18,6 +18,12 @@
           <form method="POST" action="{{ route('user.update')}}" enctype="multipart/form-data">
             @csrf
 
+            @if(Auth::user()->image)
+            <div class="text-center mb-4">
+            <img src="{{ route('user.image', array('filename' => Auth::user()->image)) }}" alt="{{ Auth::user()->name }}" class="img-profile img-fluid">
+            </div>              
+            @endif
+
             <div class="form-group row">
               <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -78,7 +84,7 @@
               <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Imagen de perfil') }}</label>
 
               <div class="col-md-6">
-                <input id="image_path" type="file" class=" @error('image_path') is-invalid @enderror" name="image_path" required autocomplete="image_path">
+                <input id="image_path" type="file" class=" @error('image_path') is-invalid @enderror" name="image_path">
 
                 @error('image_path')
                 <span class="invalid-feedback" role="alert">

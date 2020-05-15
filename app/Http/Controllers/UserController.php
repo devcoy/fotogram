@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +25,7 @@ class UserController extends Controller
    * 
    * @param Request $request Datos del formulario
    * 
-   * @return redirect Array con un mensaje
+   * @return redirect con un mensaje
    */
   public function update(Request $request)
   {
@@ -67,5 +68,19 @@ class UserController extends Controller
     return redirect()->route('config')->with(array(
       'message' => 'Usuario actualizado correctamente'
     ));
+  }
+
+
+  /**
+   * Obtener la img del \Storage
+   * 
+   * @param $filename Nombre de la img
+   * 
+   * @return Response img en base_64
+   */
+  public function getImage($filename) {
+    $file = \Storage::disk('users')->get($filename);
+
+    return new Response($file, 200);
   }
 }
