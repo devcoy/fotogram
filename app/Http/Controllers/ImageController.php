@@ -60,7 +60,7 @@ class ImageController extends Controller
         $image->save();
 
         return redirect()->route('home')->with(array(
-            'message' => 'Se ha publicado la imagen correctamente'
+            'message' => 'Se ha publicado la foto correctamente'
         ));
 
     }
