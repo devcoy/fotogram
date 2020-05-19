@@ -21,3 +21,10 @@
   border-radius: 50%;
   overflow: hidden;  
 }
+
+.image-card__img-profile {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden; 
+}
