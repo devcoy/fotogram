@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Image;
+use Illuminate\Http\Response;
 
 class ImageController extends Controller
 {
@@ -63,5 +64,12 @@ class ImageController extends Controller
             'message' => 'Se ha publicado la foto correctamente'
         ));
 
+    }
+
+
+    public function getImage($filename) {
+        $file = \Storage::disk('images')->get($filename);
+
+        return new Response($file, 200);
     }
 }
