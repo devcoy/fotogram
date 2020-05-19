@@ -9,7 +9,7 @@
       <div class="image-card card mb-5">
         <div class="card-header">
           @if($image->user->image)
-          <img src="{{ route('user.image', array('filename' => $image->user->image)) }}" alt="{{ $image->user->nick }}" class="image-card__img-profile">
+          <img src="{{ route('user.image', array('filename' => $image->user->image)) }}" alt="{{ $image->user->nick }}" class="image-card__img-profile">          
           @endif
           <strong>{{ $image->user->name . ' ' . $image->user->surname }}</strong> |
           <small>@ {{ $image->user->nick}}</small>
@@ -19,9 +19,11 @@
           <div class="image-card__container">
             @if($image->image_path)
             <img src="{{ route('image.file', array('filename' => $image->image_path)) }}" alt="" class="">
+            @else
+            <img src="img/img-default.svg" alt="Imagen default" class="">
             @endif
           </div>
-          <div class="image-card__likes-comments row justify-content-left p-2">
+          <div class="image-card__likes-comments row justify-content-left p-3">
             <div class="col-6 likes">
               <img src="img/likes.svg" alt="Likes" width="15px" class=""> <span>{{ count($image->likes) }} Likes</span>
             </div>
@@ -29,7 +31,7 @@
               <img src="img/comments.svg" alt="Comments" width="15px" class=""> <span>{{ count($image->comments) }} Comentarios</span>
             </div>            
           </div>
-          <div class="image-card__description p-2">
+          <div class="image-card__description p-3">
             <p>{{ $image->description}}</p>
           </div>
 
