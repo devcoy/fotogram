@@ -22,6 +22,10 @@
   overflow: hidden;  
 }
 
+.image-card,
+.image-card .card-header {
+  border: 0;
+}
 .image-card__img-profile {
   width: 20px;
   height: 20px;

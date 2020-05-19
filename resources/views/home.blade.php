@@ -6,7 +6,7 @@
   <div class="row justify-content-left">
     @foreach($images as $image)
     <div class="col-md-6">
-      <div class="card mb-5">
+      <div class="image-card card mb-5">
         <div class="card-header">
           @if($image->user->image)
           <img src="{{ route('user.image', array('filename' => $image->user->image)) }}" alt="{{ $image->user->nick }}" class="image-card__img-profile">
@@ -38,5 +38,8 @@
     </div>
     @endforeach
   </div>
+  <!-- paginación -->
+  <div class="clear-fix"> </div>
+  {{ $images->links() }}
 </div>
 @endsection
