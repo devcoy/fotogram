@@ -25,7 +25,7 @@
             @endif
           </div>
           <div class="image-card__description px-3 pt-3">
-            <span class="image-card__nick">{{'@' . $image->user->nick }}</span> <small>{{ $image->created_at }}</small>
+            <span class="image-card__nick">{{'@' . $image->user->nick }}</span> <small>{{' | ' .  \FormatTime::LongTimeFilter($image->created_at) }}</small>
             <p>{{ $image->description}}</p>
           </div>
           <div class="image-card__likes-comments row justify-content-left p-3 pt-0">
