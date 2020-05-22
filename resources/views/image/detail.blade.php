@@ -22,7 +22,7 @@
             @endif
           </div>
           <div class="image-card__description px-3 pt-3">
-          <span class="image-card__nick">{{'@' . $image->user->nick }}</span> <small>{{' | ' .  \FormatTime::LongTimeFilter($image->created_at) }}</small>
+            <span class="image-card__nick">{{'@' . $image->user->nick }}</span> <small>{{' | ' .  \FormatTime::LongTimeFilter($image->created_at) }}</small>
             <p>{{ $image->description}}</p>
           </div>
           <div class="image-card__likes-comments row justify-content-left p-3 pt-0">
@@ -37,7 +37,19 @@
                 <img src="{{ asset('img/comments.svg') }}" alt="Comments" width="15px" class="">
               </a>
               <span>{{ count($image->comments) }} Comentarios</span>
-            </div>
+            </div>            
+          </div>          
+          <div class="comments row justofy-content-left p-3">
+            <form action="#" method="pos" class="col-12">
+              @csrf
+              <input type="hidden" name="image_id" value="{{ $image->id }}">
+              <div class="form-group">
+                <textarea name="content" cols="30" rows="3" class="form-control" placeholder="Comentario..."></textarea>
+              </div>
+              <div class="text-right">
+                <input type="submit" value="Comentar" class="btn btn-primary btn-sm">
+              </div>
+            </form>
           </div>
 
         </div>
