@@ -67,9 +67,33 @@ class ImageController extends Controller
     }
 
 
+    /**
+     * Obtener la image
+     * 
+     * @param string $filename Nombre del archivo
+     * 
+     * @return Response $file Archivo
+     */
     public function getImage($filename) {
         $file = \Storage::disk('images')->get($filename);
 
         return new Response($file, 200);
+    }
+
+
+    /** 
+     * Detalle de una imagen
+     * 
+     * @param integer $id Id de la imagen a mostrar
+     * 
+     * @return view Vista de la imagen renderizada
+     * 
+    */
+    public function detail($id) {
+        $image = Image::find($id); //Obtener la imagen
+
+        return view('image.detail', array(
+            'image' => $image
+        ));
     }
 }

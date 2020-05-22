@@ -40,3 +40,11 @@
 .image-card__container img {
   width: 100%;  
 }
+
+.full-image__container {
+  max-height: unset;
+}
+.full-image {
+  max-height: unset;
+  width: 100%;
+}

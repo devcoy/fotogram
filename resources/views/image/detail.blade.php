@@ -4,8 +4,7 @@
 <div class="container">
   @include ('includes.message')
   <div class="row justify-content-left">
-    @foreach($images as $image)
-    <div class="col-md-6">
+    <div class="col-md-10 offset-md-1">
       <div class="image-card card mb-5">
         <div class="card-header">
           @if($image->user->image)
@@ -16,11 +15,9 @@
         </div>
 
         <div class="card-body p-0">
-          <div class="image-card__container">
+          <div class="full-image__container">
             @if($image->image_path)
-            <a href="{{ route('image.detail', array('id' => $image->id)) }}">
-              <img src="{{ route('image.file', array('filename' => $image->image_path)) }}" alt="" class="">
-            </a>
+            <img src="{{ route('image.file', array('filename' => $image->image_path)) }}" alt="" class="full-image">
             @else
             <img src="{{ asset('img/img-default.svg') }}" alt="Imagen default" class="">
             @endif
@@ -46,10 +43,7 @@
         </div>
       </div>
     </div>
-    @endforeach
+
   </div>
-  <!-- paginación -->
-  <div class="clear-fix"> </div>
-  {{ $images->links() }}
 </div>
 @endsection
