@@ -21,3 +21,33 @@
   border-radius: 50%;
   overflow: hidden;  
 }
+
+.image-card,
+.image-card .card-header {
+  border: 0;
+}
+.image-card__img-profile {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden; 
+}
+.image-card__container {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+.image-card__container img {
+  width: 100%;  
+}
+.image-card__nick {
+  color: #858585;
+}
+
+.full-image__container {
+  max-height: unset;
+}
+.full-image {
+  max-height: unset;
+  width: 100%;
+}

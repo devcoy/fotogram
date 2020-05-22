@@ -26,8 +26,8 @@
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-          <img src="img/logo.svg" alt="Logo" width="20">
+        <a class="navbar-brand" href="{{ url('/') }}">        
+          <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="20">
           <strong>{{ config('app.name', 'Laravel') }}</strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -54,10 +54,10 @@
             @endif
             @else
             <li class="nav-item">
-              <a href="#" class="nav-link">Inicio</a>
+              <a href="{{ route('home') }}" class="nav-link">Inicio</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Publicar imagen</a>
+              <a href="{{ route('image.create') }}" class="nav-link">Publicar imagen</a>
             </li>
             <li class="nav-item img-profile__small">
               @include('includes.img-profile')
