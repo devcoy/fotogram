@@ -40,11 +40,16 @@
             </div>            
           </div>          
           <div class="comments row justofy-content-left p-3">
-            <form action="#" method="pos" class="col-12">
+            <form action="{{ route('comment.save') }}" method="post" class="col-12">
               @csrf
               <input type="hidden" name="image_id" value="{{ $image->id }}">
               <div class="form-group">
-                <textarea name="content" cols="30" rows="3" class="form-control" placeholder="Comentario..."></textarea>
+                <textarea name="content" cols="30" rows="3" class="form-control @error('content') is-invalid @enderror" placeholder="Comentario..." required></textarea>
+                @error('content')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
               </div>
               <div class="text-right">
                 <input type="submit" value="Comentar" class="btn btn-primary btn-sm">
