@@ -10,8 +10,7 @@
           @if($image->user->image)
           <img src="{{ route('user.image', array('filename' => $image->user->image)) }}" alt="{{ $image->user->nick }}" class="image-card__img-profile">
           @endif
-          <strong>{{ $image->user->name . ' ' . $image->user->surname }}</strong> |
-          <small>@ {{ $image->user->nick}}</small>
+          <strong>{{ $image->user->name . ' ' . $image->user->surname }}</strong>
         </div>
 
         <div class="card-body p-0">
@@ -22,7 +21,11 @@
             <img src="{{ asset('img/img-default.svg') }}" alt="Imagen default" class="">
             @endif
           </div>
-          <div class="image-card__likes-comments row justify-content-left p-3">
+          <div class="image-card__description px-3 pt-3">
+            <span class="image-card__nick">{{'@' . $image->user->nick }}</span> <small>{{ $image->created_at }}</small>
+            <p>{{ $image->description}}</p>
+          </div>
+          <div class="image-card__likes-comments row justify-content-left p-3 pt-0">
             <div class="col-6 likes">
               <a href="#">
                 <img src="{{ asset('img/likes.svg') }}" alt="Likes" width="15px" class="">
@@ -35,9 +38,6 @@
               </a>
               <span>{{ count($image->comments) }} Comentarios</span>
             </div>
-          </div>
-          <div class="image-card__description p-2 pt-0">
-            <p>{{ $image->description}}</p>
           </div>
 
         </div>

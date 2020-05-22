@@ -40,6 +40,9 @@
 .image-card__container img {
   width: 100%;  
 }
+.image-card__nick {
+  color: #858585;
+}
 
 .full-image__container {
   max-height: unset;
