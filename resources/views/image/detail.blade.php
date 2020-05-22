@@ -25,7 +25,7 @@
             <span class="image-card__nick">{{'@' . $image->user->nick }}</span> <small>{{' | ' .  \FormatTime::LongTimeFilter($image->created_at) }}</small>
             <p>{{ $image->description}}</p>
           </div>
-          <div class="image-card__likes-comments row justify-content-left p-3 pt-0">
+          <div class="image-card__likes-comments row justify-content-left px-3 pt-0 pb-1">
             <div class="col-6 likes">
               <a href="#">
                 <img src="{{ asset('img/likes.svg') }}" alt="Likes" width="15px" class="">
@@ -38,9 +38,19 @@
               </a>
               <span>{{ count($image->comments) }} Comentarios</span>
             </div>            
-          </div>          
-          <div class="comments row justofy-content-left p-3">
-            <form action="{{ route('comment.save') }}" method="post" class="col-12">
+          </div>
+          <hr class="mx-3">
+          <div class="comments row justify-content-left p-3">
+            @foreach($image->comments as $comment)
+            <div class="comment px-3 pb-3 w-100">
+              <strong>{{ '@' . $comment->user->nick }}</strong>
+              {{ $comment->content }}
+              <small class="date w-100 d-block">
+                {{ \FormatTime::LongTimeFilter($comment->created_at) }}
+              </small>
+            </div>
+            @endforeach
+            <form action="{{ route('comment.save') }}" method="post" class="col-12 pt-3">
               @csrf
               <input type="hidden" name="image_id" value="{{ $image->id }}">
               <div class="form-group">

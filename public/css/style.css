@@ -1,3 +1,6 @@
+strong {
+  font-weight: 900 !important;
+}
 .img-profile__medium {
   display: flex;
   justify-content: center;
@@ -40,7 +43,7 @@
 .image-card__container img {
   width: 100%;  
 }
-.image-card__nick {
+.image-card__nick, .date{
   color: #858585;
 }
 
