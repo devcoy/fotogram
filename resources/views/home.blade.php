@@ -31,7 +31,7 @@
               <img src="img/comments.svg" alt="Comments" width="15px" class=""> <span>{{ count($image->comments) }} Comentarios</span>
             </div>            
           </div>
-          <div class="image-card__description p-3">
+          <div class="image-card__description p-2 pt-0">
             <p>{{ $image->description}}</p>
           </div>
 
