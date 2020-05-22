@@ -16,7 +16,7 @@ class Image extends Model
      * Indico con que Modelo se va a relacionar
      */
     public function comments() {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Comment')->orderBy('id', 'desc');
     }
 
 
