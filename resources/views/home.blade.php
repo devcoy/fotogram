@@ -40,11 +40,11 @@
               @endforeach
               @if($user_like)
               <a href="#">
-                <img src="{{ asset('img/like.svg') }}" alt="Like" width="15px" class="dislike">
+                <img src="{{ asset('img/like.svg') }}" alt="Like" width="15px" class="like">
               </a>
               @else
               <a href="#">
-                <img src="{{ asset('img/dislike.svg') }}" alt="Dislike" width="15px" class="like">
+                <img src="{{ asset('img/dislike.svg') }}" alt="Dislike" width="15px" class="dislike">
               </a>
               @endif
               <span>{{ count($image->likes) }} Likes</span>
