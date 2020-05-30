@@ -13,7 +13,8 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
 
-    public function save(Request $request) {
+    public function save(Request $request)
+    {
 
         // Validar información
         $validate = $this->validate($request, array(
@@ -40,6 +41,28 @@ class CommentController extends Controller
         return redirect()->route('image.detail', array('id' => $image_id))->with(array(
             'message' => 'Comentario publicado'
         ));
+    }
 
+    public function delete($id)
+    {
+        // Conseguir los datos del usuario identificado
+        $user = \Auth::user();
+
+        // Condeguir el objeto del comentario
+        $comment = Comment::find($id);
+
+        // Comprobar si soy el dueño del comentario o de la publicación
+        if ($user && ($comment->user_id === $user->id || $comment->image->user_id === $user->id)) {
+            $comment->delete(); // Eliminar comentario de la BD
+            // Redirigir
+            return redirect()->route('image.detail', array('id' => $comment->image->id))->with(array(
+                'message' => 'Comentario eliminado'
+            ));
+        } else {
+            // Redirigir
+            return redirect()->route('image.detail', array('id' => $comment->image->id))->with(array(
+                'message' => 'El comentario no se ha podido eliminar'
+            ));
+        }
     }
 }

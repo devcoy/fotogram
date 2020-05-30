@@ -37,7 +37,7 @@
                 <img src="{{ asset('img/comments.svg') }}" alt="Comments" width="15px" class="">
               </a>
               <span>{{ count($image->comments) }} Comentarios</span>
-            </div>            
+            </div>
           </div>
           <hr class="mx-3">
           <div class="comments row justify-content-left p-3">
@@ -47,6 +47,9 @@
               {{ $comment->content }}
               <small class="date w-100 d-block">
                 {{ \FormatTime::LongTimeFilter($comment->created_at) }}
+                @if(Auth::check() && ($comment->user_id === Auth::user()->id || $comment->image->user_id === Auth::user()->id))
+                <a href="{{ route('comment.delete', array('id' => $comment->id))}}" class="ml-2">Eliminar</a>
+                @endif
               </small>
             </div>
             @endforeach
