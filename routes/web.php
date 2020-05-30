@@ -48,3 +48,8 @@ Route::get('/publicacion/crear', 'ImageController@create')->name('image.create')
 Route::post('/publicacion/guardar', 'ImageController@save')->name('image.save');
 Route::get('/imagen/file/{filename}', 'ImageController@getImage')->name('image.file');
 Route::get('/imagen/{id}', 'ImageController@detail')->name('image.detail');
+
+
+// Rutas Comentarios
+Route::post('/comentario/comentar', 'CommentController@save')->name('comment.save');
+Route::get('/comentario/eliminar/{id}', 'CommentController@delete')->name('comment.delete');
