@@ -22,7 +22,6 @@ class LikeController extends Controller
      */
     public function like($image_id)
     {
-
         // Obtener datos del usuario logueado
         $user = \Auth::user();
 
@@ -47,12 +46,35 @@ class LikeController extends Controller
             return response()->json(array(
                 'status' => 'error',
                 'code' => 400,
-                'message' => 'El like ya existe'                
+                'message' => 'El like ya existe'
             ));
         }
     }
 
-    public function dislike()
+    public function dislike($image_id)
     {
+        // Obtener datos del usuario logueado
+        $user = \Auth::user();
+
+        // Comprobar si el like ya existe
+        $like = Like::where('user_id', $user->id)->where('image_id', $image_id)->first();
+
+        if ($like) {
+            // Eliminar el like
+            $like->delete();
+
+            return response()->json(array(
+                'status' => 'success',
+                'code' => 200,
+                'message' => 'Has dado dislike',
+                'like' => $like
+            ));
+        } else {
+            return response()->json(array(
+                'status' => 'error',
+                'code' => 404,
+                'message' => 'El like no existe'
+            ));
+        }
     }
 }
