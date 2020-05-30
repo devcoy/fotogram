@@ -30,9 +30,23 @@
           </div>
           <div class="image-card__likes-comments row justify-content-left p-3 pt-0">
             <div class="col-6 likes">
+              
+              <!-- comrpobar si el usuario logueado le ha dado like a la publicación -->
+              <?php $user_like = false; ?>
+              @foreach($image->likes as $like)
+              @if($like->user->id == Auth::user()->id)
+              <?php $user_like = true; ?>
+              @endif
+              @endforeach
+              @if($user_like)
               <a href="#">
-                <img src="{{ asset('img/likes.svg') }}" alt="Likes" width="15px" class="">
+                <img src="{{ asset('img/like.svg') }}" alt="Like" width="15px" class="dislike">
               </a>
+              @else
+              <a href="#">
+                <img src="{{ asset('img/dislike.svg') }}" alt="Dislike" width="15px" class="like">
+              </a>
+              @endif
               <span>{{ count($image->likes) }} Likes</span>
             </div>
             <div class="col-6 comments">
