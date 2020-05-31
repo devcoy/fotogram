@@ -75,15 +75,15 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                  {{ __('Logout') }}
-                </a>
                 <a class="dropdown-item" href="{{ route('user.profile', array('id' => Auth::user()->id)) }}"" onclick="" ;>
                   Mi perfil
                 </a>
-                <a class="dropdown-item" href="{{ route('config') }}" onclick="" ;>
+                <a class=" dropdown-item" href="{{ route('config') }}" onclick="" ;>
                   Configuración
+                </a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                  {{ __('Cerrar sesión') }}
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
