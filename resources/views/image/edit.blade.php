@@ -14,17 +14,18 @@
           <h1>Editar publicación</h1>
         </div>
         <div class="card-body">
-          <form action="" method="post" enctype="multipart/form-data">
+          <form action="{{ route('image.update') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group row">
+              <input type="hidden" name="image_id" value="{{ $image->id }}">
               <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
               <div class="col-md-6">
-                <div class="full-image__container">
+                <div class="full-image__container mb-3">
                   @if($image->image_path)
                   <img src="{{ route('image.file', array('filename' => $image->image_path)) }}" alt="" class="full-image">                  
                   @endif
                 </div>
-                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" required autofocus>
+                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" autofocus>
                 @error('image_path')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>

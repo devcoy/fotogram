@@ -50,6 +50,7 @@ Route::get('/imagen/file/{filename}', 'ImageController@getImage')->name('image.f
 Route::get('/imagen/{id}', 'ImageController@detail')->name('image.detail');
 Route::get('/imagen/delete/{id}', 'ImageController@delete')->name('image.delete');
 Route::get('/publicacion/editar/{id}', 'ImageController@edit')->name('image.edit');
+Route::post('/publicacion/actualizar', 'ImageController@update')->name('image.update');
 
 
 // Rutas Comentarios

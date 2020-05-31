@@ -145,12 +145,14 @@ class ImageController extends Controller
 
   /**
    * Editar una publicación
+   * 
    */
-  public function edit($id) {
+  public function edit($id)
+  {
     $user = \Auth::user();
     $image = Image::find($id);
 
-    if($user && $image && $image->user->id === $user->id) {
+    if ($user && $image && $image->user->id === $user->id) {
       return view('image.edit', array(
         'image' => $image
       ));
@@ -158,4 +160,43 @@ class ImageController extends Controller
       return redirect()->route('home');
     }
   }
+
+  /**
+   * Actualizar la publicación en la BD
+   */
+  public function update(Request $request)
+  {
+  // Obtnener los datos del formulario    
+    $image_id = $request->input('image_id');
+    $image_path = $request->file('image_path');
+    $description = $request->input('description');
+    
+
+    //Validación de datos
+    $validate = $this->validate($request, array(
+      'description' => 'required',
+      'image_path' => 'mimes:jpg,jpeg,png,gif'
+    ));
+
+    // Obtener el objeto de imagen
+    $image = Image::find($image_id);
+
+    // Setar los nuevos valores
+    $image->description = $description;
+
+    //Subri archivo y setearlo
+    if ($image_path) {
+      $image_name = time() . $image_path->getClientOriginalName();
+      \Storage::disk('images')->put($image_name, \File::get($image_path));
+      $image->image_path = $image_name;
+    }
+
+    // Actualiza el registro en la BD
+    $image->update();
+
+    return redirect()->route('image.detail', array('id' => $image_id))->with(array(
+      'message' => 'Se actualizo la publicación correctamente'
+    ));
+  }
+
 }
