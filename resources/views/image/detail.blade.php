@@ -58,7 +58,7 @@
           @if(Auth::user() && Auth::user()->id === $image->user_id)
           <div class="col-12 text-right actions">
             <a href="#" class="mx-3 text-info">Editar</a>
-            <a href="#" class="text-danger">Eliminar</a>
+            <a href="{{ route('image.delete', array('id' => $image->id)) }}" class="text-danger">Eliminar</a>
           </div>
           @endif
           <hr class="mx-3">
