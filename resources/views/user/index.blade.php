@@ -3,8 +3,19 @@
 @section('content')
 <div class="container">
   <h1>Usuarios</h1>
+  <div class="user-search w-100 mt-3 mb-5">
+    <form action="{{ route('user.index') }}" method="get" class="form-inline" id="search-form">
+      <div class="form-group col-12 col-md-6">
+        <input type="text" id="search" class="form-control w-100" placeholder="Buscar usuario...">
+      </div>
+      <div class="form-group col-12 col-md-6">
+      <input type="submit" value="Buscar" class="btn btn-success btn-sm">
+      </div>      
+    </form>
+  </div>
   <hr>
   <div class="row justify-content-left">
+
     @foreach($users as $user)
     <div class="col-md-6">
       <div class="data-user row justify-content-left align-items-center mt-3 mb-5">
