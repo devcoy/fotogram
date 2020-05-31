@@ -55,6 +55,34 @@
               <span>{{ count($image->comments) }} Comentarios</span>
             </div>
           </div>
+          @if(Auth::user() && Auth::user()->id === $image->user_id)
+          <div class="col-12 text-right actions">
+            <a href="{{ route('image.edit', array('id' => $image->id)) }}" class="mx-3 text-info">Editar</a>
+            <a href="#" class="text-danger" data-toggle="modal" data-target="#deleteActionModal">Eliminar</a>
+
+
+            <!-- Modal eliminar publicación -->
+            <div class="modal fade" id="deleteActionModal" tabindex="-1" role="dialog" aria-labelledby="deleteActionModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="deleteActionModalLabel">Eliminar publicación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body text-left">
+                    <p>¿Estás seguro que deseas eliminar la publicación?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <a href="{{ route('image.delete', array('id' => $image->id)) }}" type="button" class="btn btn-danger">Eliminar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endif
           <hr class="mx-3">
           <div class="comments row justify-content-left p-3">
             @foreach($image->comments as $comment)

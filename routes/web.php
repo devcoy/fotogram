@@ -48,6 +48,9 @@ Route::get('/publicacion/crear', 'ImageController@create')->name('image.create')
 Route::post('/publicacion/guardar', 'ImageController@save')->name('image.save');
 Route::get('/imagen/file/{filename}', 'ImageController@getImage')->name('image.file');
 Route::get('/imagen/{id}', 'ImageController@detail')->name('image.detail');
+Route::get('/imagen/delete/{id}', 'ImageController@delete')->name('image.delete');
+Route::get('/publicacion/editar/{id}', 'ImageController@edit')->name('image.edit');
+Route::post('/publicacion/actualizar', 'ImageController@update')->name('image.update');
 
 
 // Rutas Comentarios
@@ -58,6 +61,7 @@ Route::get('/comentario/eliminar/{id}', 'CommentController@delete')->name('comme
 Route::get('/like/{image_id}', 'LikeController@like')->name('like.save');
 Route::get('/dislike/{image_id}', 'LikeController@dislike')->name('like.delete');
 Route::get('/likes', 'LikeController@index')->name('like.index');
+
 
 // Rutas de usuarios
 Route::get('/perfil/{id}', 'UserController@profile')->name('user.profile');
