@@ -55,6 +55,12 @@
               <span>{{ count($image->comments) }} Comentarios</span>
             </div>
           </div>
+          @if(Auth::user() && Auth::user()->id === $image->user_id)
+          <div class="col-12 text-right actions">
+            <a href="#" class="mx-3 text-info">Editar</a>
+            <a href="#" class="text-danger">Eliminar</a>
+          </div>
+          @endif
           <hr class="mx-3">
           <div class="comments row justify-content-left p-3">
             @foreach($image->comments as $comment)
