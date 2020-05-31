@@ -64,4 +64,5 @@ Route::get('/likes', 'LikeController@index')->name('like.index');
 
 
 // Rutas de usuarios
+Route::get('/usuarios', 'UserController@index')->name('user.index');
 Route::get('/perfil/{id}', 'UserController@profile')->name('user.profile');
