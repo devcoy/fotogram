@@ -9,14 +9,33 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-  
+
   public function __construct()
   {
-      $this->middleware('auth');
+    $this->middleware('auth');
   }
 
   /**
-   * Render vista 
+   * Listar todos los usuarios
+   */
+  public function index($search = null)
+  {
+    if (!empty($search)) {
+      // Obtener todos los usuarios
+      $users = User::orderBy('id', 'desc')->where('nick', 'LIKE', '%' . $search . '%')->orWhere('name', 'LIKE', '%' . $search . '%')->orWhere('name', 'LIKE', '%' . $search . '%')->orWhere('surname', 'LIKE', '%' . $search . '%')->orderBy('id', 'desc')->paginate(6);
+    } else {
+      // Obtener todos los usuarios
+      $users = User::orderBy('id', 'desc')->paginate(6);
+    }
+
+
+    return view('user.index', array(
+      'users' => $users
+    ));
+  }
+
+  /**
+   * Ver mis datos de la cuenta
    * 
    * @return view
    */
@@ -59,12 +78,12 @@ class UserController extends Controller
     $user->email = $email;
 
     //Subir img de perfil
-    $image_path = $request->file('image_path');    
+    $image_path = $request->file('image_path');
     if ($image_path) {
       $image_name = time() . $image_path->getClientOriginalName();
-      \Storage::disk('users')->put($image_name, \File::get($image_path));      
+      \Storage::disk('users')->put($image_name, \File::get($image_path));
       $user->image = $image_name;
-    } 
+    }
 
     //Ejecutar query 
     $user->update();
@@ -82,18 +101,22 @@ class UserController extends Controller
    * 
    * @return Response img en base_64
    */
-  public function getImage($filename) {
+  public function getImage($filename)
+  {
     $file = \Storage::disk('users')->get($filename);
 
     return new Response($file, 200);
   }
 
-  public function profile($id) {
+  /** 
+   * Ver el perfil del usuario con sus publicaciones
+   */
+  public function profile($id)
+  {
     $user = User::find($id);
     //var_dump($user); die();
     return view('user.profile', array(
       'user' => $user
     ));
-
   }
 }

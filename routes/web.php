@@ -29,19 +29,11 @@ foreach($images as $image) {
     echo '<hr/>'; 
 }
 die(); */
-
     return view('welcome');
 });
-
 Auth::routes();
-
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/configuracion', 'UserController@config')->name('config');
-
-Route::post('/user/actualizar', 'UserController@update')->name('user.update');
-
-Route::get('/user/imagen/{filename}', 'UserController@getImage')->name('user.image');
 
 //Ruta de imágenes
 Route::get('/publicacion/crear', 'ImageController@create')->name('image.create');
@@ -64,4 +56,8 @@ Route::get('/likes', 'LikeController@index')->name('like.index');
 
 
 // Rutas de usuarios
+Route::get('/usuarios/{search?}', 'UserController@index')->name('user.index');
 Route::get('/perfil/{id}', 'UserController@profile')->name('user.profile');
+Route::get('/usuario/configuracion', 'UserController@config')->name('config');
+Route::post('/usuario/actualizar', 'UserController@update')->name('user.update');
+Route::get('/usuario/imagen/{filename}', 'UserController@getImage')->name('user.image');

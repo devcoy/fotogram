@@ -52,5 +52,13 @@ window.addEventListener('load', function () {
     });
   }
 
+  // Buscador
+  $('#search-form').submit(function(e) {
+    let searchString = $('#search-form #search').val();
+    //console.log(searchString);
+    //e.preventDefault();
+    $(this).attr('action', url + 'usuarios/' + searchString);
+    //$(this).submit(),
+  });
 
 });
