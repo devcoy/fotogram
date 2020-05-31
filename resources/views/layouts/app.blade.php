@@ -12,6 +12,7 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('js/main.js') }}"></script>
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,7 +27,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
       <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">        
+        <a class="navbar-brand" href="{{ url('/') }}">
           <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="20">
           <strong>{{ config('app.name', 'Laravel') }}</strong>
         </a>
@@ -57,6 +58,9 @@
               <a href="{{ route('home') }}" class="nav-link">Inicio</a>
             </li>
             <li class="nav-item">
+              <a href="{{ route('like.index') }}" class="nav-link">Publicaciones favoritas</a>
+            </li>
+            <li class="nav-item">
               <a href="{{ route('image.create') }}" class="nav-link">Publicar imagen</a>
             </li>
             <li class="nav-item img-profile__small">
@@ -72,10 +76,10 @@
                                                      document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
                 </a>
-                <a class="dropdown-item" href=#}" onclick="";>
+                <a class="dropdown-item" href=#}" onclick="" ;>
                   Mi perfil
                 </a>
-                <a class="dropdown-item"href="{{ route('config') }}" onclick="";>
+                <a class="dropdown-item" href="{{ route('config') }}" onclick="" ;>
                   Configuración
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
