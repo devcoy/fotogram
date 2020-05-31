@@ -57,11 +57,11 @@
           </div>
           @if(Auth::user() && Auth::user()->id === $image->user_id)
           <div class="col-12 text-right actions">
-            <a href="#" class="mx-3 text-info">Editar</a>
+            <a href="{{ route('image.edit', array('id' => $image->id)) }}" class="mx-3 text-info">Editar</a>
             <a href="#" class="text-danger" data-toggle="modal" data-target="#deleteActionModal">Eliminar</a>
 
 
-            <!-- Modal -->
+            <!-- Modal eliminar publicación -->
             <div class="modal fade" id="deleteActionModal" tabindex="-1" role="dialog" aria-labelledby="deleteActionModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
