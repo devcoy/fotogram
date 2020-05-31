@@ -18,10 +18,16 @@ class UserController extends Controller
   /**
    * Listar todos los usuarios
    */
-  public function index()
+  public function index($search = null)
   {
-    // Obtener todos los usuarios
-    $users = User::orderBy('id', 'desc')->paginate(6);
+    if (!empty($search)) {
+      // Obtener todos los usuarios
+      $users = User::orderBy('id', 'desc')->where('nick', 'LIKE', '%' . $search . '%')->orWhere('name', 'LIKE', '%' . $search . '%')->orWhere('name', 'LIKE', '%' . $search . '%')->orWhere('surname', 'LIKE', '%' . $search . '%')->orderBy('id', 'desc')->paginate(6);
+    } else {
+      // Obtener todos los usuarios
+      $users = User::orderBy('id', 'desc')->paginate(6);
+    }
+
 
     return view('user.index', array(
       'users' => $users
