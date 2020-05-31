@@ -10,7 +10,9 @@
           @if($image->user->image)
           <img src="{{ route('user.image', array('filename' => $image->user->image)) }}" alt="{{ $image->user->nick }}" class="image-card__img-profile">
           @endif
-          <strong>{{ $image->user->name . ' ' . $image->user->surname }}</strong>
+          <a href="{{ route('user.profile', array('id' => $image->user->id)) }}">
+            <strong>{{ $image->user->name . ' ' . $image->user->surname }}</strong>
+          </a>
         </div>
 
         <div class="card-body p-0">

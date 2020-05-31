@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,6 @@ class UserController extends Controller
    */
   public function update(Request $request)
   {
-
     //Obtener el usuario logeado
     $user = \Auth::user();
 
@@ -86,5 +86,14 @@ class UserController extends Controller
     $file = \Storage::disk('users')->get($filename);
 
     return new Response($file, 200);
+  }
+
+  public function profile($id) {
+    $user = User::find($id);
+    //var_dump($user); die();
+    return view('user.profile', array(
+      'user' => $user
+    ));
+
   }
 }
