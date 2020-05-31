@@ -1,9 +1,21 @@
 strong {
   font-weight: 900 !important;
 }
+.img-profile {
+  display: flex;
+  justify-content: center;  
+}
+
+.img-profile img{
+  width: auto; 
+  height: 60%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .img-profile__medium {
   display: flex;
-  justify-content: center;
+  justify-content: center;  
 }
 
 .img-profile__medium img{
