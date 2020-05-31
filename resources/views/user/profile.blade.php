@@ -13,9 +13,7 @@
       <h4>{{ $user->name . ' ' . $user->surname}}</h4>
       <small>{{'Miembro desde ' .  \FormatTime::LongTimeFilter($user->created_at) }}</small><br/>
       <small>{{ count($user->images) . ' Publicaciones' }}</small>
-    </div>
-
-
+    </div>    
   </div>
 
   @include ('includes.message')
